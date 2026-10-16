@@ -171,6 +171,18 @@ HANDLERS = {"descriptives": h_descriptives, "entropy": h_entropy, "clustering": 
 def health():
     return {"status": "ok", "sessions": len(SESSIONS)}
 
+@app.get("/debug/fs")
+def debug_fs():
+    import os
+    root = os.path.dirname(__file__)
+    listing = {}
+    for name in os.listdir(root):
+        p = os.path.join(root, name)
+        listing[name] = "dir" if os.path.isdir(p) else "file"
+    fd = os.path.join(root, "frontend_dist")
+    fd_contents = os.listdir(fd) if os.path.isdir(fd) else None
+    return {"cwd_root": root, "entries": listing, "frontend_dist": fd_contents}
+
 
 @app.post("/sessions")
 async def create_session(request: Request):
