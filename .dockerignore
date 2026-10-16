@@ -1,0 +1,12 @@
+node_modules
+dist
+build
+frontend_dist
+.git
+.env
+.env.*
+__pycache__
+*.pyc
+.pytest_cache
+.vscode
+.idea

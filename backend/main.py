@@ -16,6 +16,8 @@ from fastapi import FastAPI, File, HTTPException, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
+from fastapi.staticfiles import StaticFiles
+
 
 import clustering
 import descriptives
@@ -252,3 +254,15 @@ def download(sid: str, name: str):
     if not os.path.isfile(path):
         raise HTTPException(404, "File not found.")
     return FileResponse(path, filename=os.path.basename(name))
+
+# Serve the built React app (last!)
+FRONTEND_DIR = os.path.join(os.path.dirname(__file__), "frontend_dist")
+
+if os.path.isdir(FRONTEND_DIR):
+    assets_dir = os.path.join(FRONTEND_DIR, "assets")
+    if os.path.isdir(assets_dir):
+        app.mount("/assets", StaticFiles(directory=assets_dir), name="assets")
+
+    @app.get("/{full_path:path}")
+    def spa(full_path: str):
+        return FileResponse(os.path.join(FRONTEND_DIR, "index.html"))
