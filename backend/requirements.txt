@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+python-multipart
+numpy
+scipy
+pandas
+statsmodels
+scikit-learn
+h5py
+pymatreader
+patsy
+pytest
+httpx
+openpyxl
+mat-io
+pyarrow>=10.0.1
