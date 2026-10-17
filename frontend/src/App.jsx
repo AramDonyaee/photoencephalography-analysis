@@ -915,11 +915,9 @@ export default function App() {
 
                 <p>Each step is one script of the paper’s Data analysis section, re-implemented in Python. Load your dataset in step 1, then run any step. Every step shows the parameters the MATLAB script uses, the outputs it produces, and the question those outputs answer.</p>
 
-                <p>Steps 2–7 describe the self-properties of the UPE traces. Steps 8–11 describe interactions between electrodes. Step 12 tests the metrics statistically.</p>
+{/*                 <p>Expected outcome (paper Figure 3): entropy and CV higher for brain electrodes than background, more very-low-frequency power (&lt; 1 Hz), higher DFA exponents, more correlation and mutual information within brain regions, no clear coherence, and occipital driving temporal in Granger causality.</p> */}
 
-                <p>Expected outcome (paper Figure 3): entropy and CV higher for brain electrodes than background, more very-low-frequency power (&lt; 1 Hz), higher DFA exponents, more correlation and mutual information within brain regions, no clear coherence, and occipital driving temporal in Granger causality.</p>
-
-                <button onClick={() => setActive('dataset')} className="px-4 py-2 text-sm font-medium text-white" style={{ background: ACCENT }}>Start with the dataset</button>
+                <button onClick={() => setActive('dataset')} className="px-4 py-2 text-sm font-medium text-white cursor-pointer" style={{ background: ACCENT }}>Proceed</button>
 
               </div>
 
